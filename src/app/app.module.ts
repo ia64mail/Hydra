@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from "./common/common.module";
 import {StubDisplayModule} from "./stub-display/stub-display.module";
 
@@ -13,6 +14,7 @@ import {StubDisplayModule} from "./stub-display/stub-display.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     CommonModule,
     StubDisplayModule
   ],

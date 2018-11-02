@@ -22,8 +22,11 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "angular2-uuid": "^1.1.1",
     "core-js": "^2.5.4",
+    "ngx-logger": "^3.3.4",
     "rxjs": "~6.3.3",
+    "typemoq": "^2.1.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -42,6 +45,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-spec-reporter": "0.0.32",
     "protractor": "~5.4.0",
     "puppeteer": "^1.9.0",
     "ts-node": "~7.0.0",

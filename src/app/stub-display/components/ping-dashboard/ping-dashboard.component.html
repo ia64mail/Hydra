@@ -1,3 +1,6 @@
-<p>
-  ping-dashboard works!
-</p>
+<mat-card>
+  <mat-card-title>Messages from server</mat-card-title>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let message of messages">{{message.i}}</mat-list-item>
+  </mat-list>
+</mat-card>
