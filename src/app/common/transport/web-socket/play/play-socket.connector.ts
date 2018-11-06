@@ -24,7 +24,7 @@ export class PlaySocketConnector extends WebSocketConnector {
   constructor() {
     super();
 
-    let config = new PlaySocketConfig('ws://localhost:8081', this.openSubject, this.closeSubject);
+    let config = new PlaySocketConfig('ws://127.0.8.64:8080/ws', this.openSubject, this.closeSubject);
     this.socketSubject = webSocket<SocketMessage>(config);
 
     //manage session ID when new connection established or closed
