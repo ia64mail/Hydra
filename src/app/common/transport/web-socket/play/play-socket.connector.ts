@@ -7,7 +7,7 @@ import {WebSocketSubject} from "rxjs/internal/observable/dom/WebSocketSubject";
 import {SocketMessage} from "../socket.message";
 import {UUID} from 'angular2-uuid';
 import {PlaySocketConfig} from "./play-socket.config";
-import {IPayload} from "../../payload";
+import {AbstractDto} from "../../abstract-dto";
 
 /**
  * Akka.io Play2 framework implementation of {@link WebSocketConnector}.
@@ -44,13 +44,13 @@ export class PlaySocketConnector extends WebSocketConnector {
     return this.openSubject.asObservable();
   }
 
-  onReceive(): Observable<IPayload> {
+  onReceive(): Observable<AbstractDto> {
     return this.socketSubject
-      .pipe(map(socketMessage => socketMessage.payload));
+      .pipe(map(socketMessage => socketMessage.dto));
   }
 
-  Send(payload: IPayload): void {
+  Send(dto: AbstractDto): void {
     this.socketSubject
-      .next(new SocketMessage(this.sessionId, payload));
+      .next(new SocketMessage(this.sessionId, dto));
   }
 }

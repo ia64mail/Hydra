@@ -2,11 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {
   WebSocketConnector
 } from "../../../common/transport/web-socket/web-socket.connector";
-import {IPayload} from "../../../common/transport/payload";
+import {AbstractDto} from "../../../common/transport/abstract-dto";
 import {LoggerService} from "../../../common/logger/logger.service";
 
-class Msg implements IPayload {
-  public i: Date = new Date();
+/**
+ * Test DTO message
+ */
+class StubDto implements AbstractDto {
+  public $class: string = "volvox.messenger.server.dto.StubDto";
+  public createdAt: number;
+  public hopCount: number;
 }
 
 @Component({
@@ -15,7 +20,7 @@ class Msg implements IPayload {
   styleUrls: ['./ping-dashboard.component.less']
 })
 export class PingDashboardComponent implements OnInit {
-  private messages: Array<Msg> = [];
+  private messages: Array<StubDto> = [];
 
   constructor(
     private service: WebSocketConnector,
@@ -23,9 +28,6 @@ export class PingDashboardComponent implements OnInit {
     service.onOpen().subscribe(
       message => {
         this.logger.info("open>", message);
-
-        //TODO start loop
-        service.Send(new Msg());
       },
       error => {
         this.logger.error("open err>", error);
@@ -34,10 +36,12 @@ export class PingDashboardComponent implements OnInit {
       value => {
         this.logger.info("receive> ", value);
 
-        this.messages.push(value as Msg);
+        let stubDto = value as StubDto;
+        this.messages.push(stubDto);
 
         //TODO maintain loop
-        service.Send(new Msg());
+        stubDto.hopCount++;
+        service.Send(stubDto);
       },
       error => {
         this.logger.error("receive err>", error);

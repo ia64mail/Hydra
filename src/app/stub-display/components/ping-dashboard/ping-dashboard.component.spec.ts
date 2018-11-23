@@ -9,14 +9,14 @@ import {WebSocketConnector} from "../../../common/transport/web-socket/web-socke
 import {LoggerService} from "../../../common/logger/logger.service";
 import {Observable} from "rxjs";
 import {IMock} from "typemoq/Api/IMock";
-import {IPayload} from "../../../common/transport/payload";
+import {AbstractDto} from "../../../common/transport/abstract-dto";
 
 /**
  *  We need stub implementation to be able to mock methods properly.
  *  See https://github.com/florinn/typemoq/issues/97 for details.
  */
 class WebSocketConnectorImpl extends WebSocketConnector {
-  Send(message: IPayload): void {
+  Send(message: AbstractDto): void {
   }
 
   onClose(): Observable<any> {
@@ -27,7 +27,7 @@ class WebSocketConnectorImpl extends WebSocketConnector {
     return undefined;
   }
 
-  onReceive(): Observable<IPayload> {
+  onReceive(): Observable<AbstractDto> {
     return undefined;
   }
 }

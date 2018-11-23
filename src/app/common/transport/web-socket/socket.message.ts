@@ -1,5 +1,5 @@
 import {UUID} from 'angular2-uuid';
-import {IPayload} from "../payload";
+import {AbstractDto} from "../abstract-dto";
 
 /**
  * Message envelope used to communicate with remote system over socket.
@@ -11,9 +11,9 @@ export class SocketMessage {
      */
     public sessionId: string,
     /**
-     * Message payload.
+     * Message dto.
      */
-    public payload: IPayload,
+    public dto: AbstractDto,
     /**
      * Message ID.
      */

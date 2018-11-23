@@ -1,5 +1,5 @@
 import {Observable} from "rxjs";
-import {IPayload} from "../payload";
+import {AbstractDto} from "../abstract-dto";
 
 /**
  *
@@ -20,12 +20,12 @@ export abstract class WebSocketConnector {
   /**
    *
    */
-  abstract onReceive(): Observable<IPayload>;
+  abstract onReceive(): Observable<AbstractDto>;
 
   /**
    *
    * @param message
    * @constructor
    */
-  abstract Send(message: IPayload): void;
+  abstract Send(message: AbstractDto): void;
 }
